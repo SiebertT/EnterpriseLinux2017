@@ -17,8 +17,8 @@ test_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 bats_archive="v0.4.0.tar.gz"
 bats_url="https://github.com/sstephenson/bats/archive/${bats_archive}"
-bats_install_dir="${test_dir}/bats"
-bats="${bats_install_dir}/libexec/bats"
+bats_install_dir="/opt"
+bats="${bats_install_dir}/bats/libexec/bats"
 
 test_file_pattern="*.bats"
 
@@ -32,8 +32,8 @@ Reset='\e[0m'
 
 # Usage: install_bats_if_needed
 install_bats_if_needed() {
-  pushd "${test_dir}" > /dev/null
-  if [[ ! -d "${bats_install_dir}" ]]; then
+  pushd "${bats_install_dir}/" > /dev/null
+  if [[ ! -d "${bats_install_dir}/bats" ]]; then
     wget "${bats_url}"
     tar xf "${bats_archive}"
     mv bats-* bats
