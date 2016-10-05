@@ -1,4 +1,14 @@
 # group_vars/all.yml
 # Variables visible to all nodes
 ---
-
+rhbase_repositories:
+  - epel-release
+rhbase_install_packages:
+  - bash-completion
+  - bind-utils
+  - git
+  - nano
+  - tree
+  - vim-enhanced
+  - wget
+  

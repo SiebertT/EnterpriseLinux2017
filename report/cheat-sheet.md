@@ -27,3 +27,34 @@ Simple workflow for a personal project without other contributors:
 2. Is the router/default gateway correct? `ip r -n`
 3. Is a DNS-server available? `cat /etc/resolv.conf`
 
+## Add SSH to GitHub login
+
+1. `Siebert@Laptop-Siebert MINGW64 ~/Documents
+$ ssh-keygen.exe`
+2. Go to path where key was generated and copy it
+3. On GitHub, login and at profile add the SSH key
+
+## To prevent DOS error
+Because SourceTree has the DOS files errors occured.
+`Siebert@Laptop-Siebert MINGW64 ~/Documents
+$ git clone --config core.autocrlf=input git@github.com:HoGentTIN/elnx-sme-SiebertT.git`
+
+
+## Add a role to Ansible for the Vagrant VMs
+open site.yml in notepad ++
+
+unders roles:, add -bertvv.rh-base
+
+> make sure there are 2 spaces infront of any added role
+
+This role has to be downloaded first under the folder /C/Users/Siebert/Documents/elnx-sme-SiebertT/ansible/roles.
+
+## Downloading a role
+1. If you're on Windows, Ansible is not supported. Through a PowerShell script and a GitHub repository you can still get the role downloaded though. 
+2. Otherwise `ansible-galaxy install author.namerole`
+
+> Protip: if you're doing Ansible, go Linux
+
+
+[Role download](https://github.com/bertvv/ansible-role-rh-base/releases)
+
