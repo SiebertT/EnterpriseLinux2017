@@ -3,7 +3,7 @@
 - Student name: 
 - Github repo: <https://github.com/HoGentTIN/elnx-USER.git>
 
-Describe the goals of the current iteration/assignment in a short sentence.
+The goal is to set the server up and take care of the Ansible role + variables for the servers to come.
 
 ## Test plan Server Setup 00
 
@@ -14,12 +14,8 @@ Describe the goals of the current iteration/assignment in a short sentence.
 - Log off and try to connect as a user through SSH
 
 
-## Test plan
-
-How are you going to verify that the requirements are met? The test plan is a detailed checklist of actions to take, including the expected result for each action, in order to prove your system meets the requirements. Part of this is running the automated tests, but it is not always possible to validate *all* requirements throught these tests.
-
 ## Procedure/Documentation Server Setup 00
-My documentation and code is written down in the [cheat sheet](https://github.com/HoGentTIN/elnx-sme-SiebertT/blob/master/report/cheat-sheet.md)
+My documentation and code is written down in the [cheat sheet](https://github.com/HoGentTIN/elnx-sme-SiebertT/blob/master/report/cheat-sheet.md) for this task.
 
 For this task, the following steps were taken:
 
@@ -31,14 +27,8 @@ For this task, the following steps were taken:
 
 > In order to get the names and syntax of the variables right, check the role documentation carefully
 
-## Procedure/Documentation
-
-Describe *in detail* how you completed the assignment, with main focus on the "manual" work. It is of course not necessary to copy/paste your code in this document, but you can refer to it with a hyperlink.
-
-Make sure to write clean Markdown code, so your report looks good and is clearly structured on Github.
 
 ## Test report Server Setup 00
-Every lab report should contain a test plan. To give an idea of what is meant by this, a test plan for this assignment is given here.
 
 - On the host system, go to the local working directory of the project repository
 - Execute `vagrant status`
@@ -76,10 +66,10 @@ Every lab report should contain a test plan. To give an idea of what is meant by
     [siebert@pu004 ~]$
     ```
 
-## Test report
-
-The test report is a transcript of the execution of the test plan, with the actual results. Significant problems you encountered should also be mentioned here, as well as any solutions you found. The test report should clearly prove that you have met the requirements.
-
 ## Resources
 
-List all sources of useful information that you encountered while completing this assignment: books, manuals, HOWTO's, blog posts, etc.
+https://github.com/bertvv/ansible-role-rh-base/tree/master
+
+https://github.com/bertvv/ansible-role-rh-base/tree/tests
+
+Syllabus Linux Enterprise
