@@ -2,4 +2,5 @@
 ---
 - hosts: pu004
   sudo: true
-  roles: []
+  roles: 
+    - bertvv.rh-base
