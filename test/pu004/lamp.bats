@@ -10,10 +10,10 @@
 #}}}
 #{{{ Variables
 sut=192.0.2.50
-mariadb_root_password=letmein123
+mariadb_root_password=4ca7c5c27c2314eecc71f67501abb724
 wordpress_database=siebsdb
 wordpress_user=siebert
-wordpress_password=letmein123
+wordpress_password=4ca7c5c27c2314eecc71f67501abb724
 #}}}
 
 # Test cases

@@ -13,10 +13,7 @@ rhbase_install_packages:
   - vim-enhanced
   - wget
   
-rhbase_firewall_allow_services:
-  - http
-  - https
-  
+
 rhbase_admin_ssh_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD0n237eRVR8e4jM4D3wx1zify0dYxAQ0Wvlgcp5CxGwGKEkzfOjYm8eeoXydwXX+pbBq0icVnGE2mDmlJmOSEC7Jz0jGMb7B9Nn7gqOYEDQGTe7qOEjHTfmraVi43+erY0CBtSQDTf6DSoYzRVbkksJBXg4/AiN8bGgJR8kLFtEjkQqW1dhudggS2mx3XOBS4W6HODxCeGiqSc5nL3O4VZ7CY/DGx5+LJ7TqTxoxOivuZ0WNkcNIbZUcHyAnZnzOGa6MAZeHwb4PpoE47ZVhOU/hYfS4x83gXe1bb7JUW3S4J77H51qcoFwRF9Y1nDudWmis4qaq/r/BIKlA5FR4Yn Siebert@Laptop-Siebert'
  
 rhbase_admin_user: siebert
