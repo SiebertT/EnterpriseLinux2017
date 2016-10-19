@@ -46,10 +46,6 @@ wordpress_password=4ca7c5c27c2314eecc71f67501abb724
   [ -n "$(sestatus) | grep 'enforcing'" ]
 }
 
-@test 'Firewall: interface enp0s8 should be added to the public zone' {
-  firewall-cmd --list-all | grep 'interfaces.*enp0s8'
-}
-
 @test 'Web traffic should pass through the firewall' {
   firewall-cmd --list-all | grep 'services.*http\b'
   firewall-cmd --list-all | grep 'services.*https\b'
@@ -99,11 +95,11 @@ wordpress_password=4ca7c5c27c2314eecc71f67501abb724
 }
 
 @test 'MariaDB should not have a test database' {
-  run mysql -uroot =p${mariadb_root_password} --execute 'show tables' test
+  run mysql -uroot -p${mariadb_root_password} --execute 'show tables' test
   [ "0" -ne "${status}" ]
 }
 
 @test 'MariaDB should not have anonymous users' {
-  result=$(mysql -uroot -pfogMeHud8 --execute "select * from user where user='';" mysql)
+  result=$(mysql -uroot -p${mariadb_root_password} --execute "select * from user where user='';" mysql)
   [ -z "${result}" ]
 }

@@ -38,3 +38,4 @@ wordpress_themes:
 httpd_SSLCertificateFile:  /etc/pki/tls/certs/ca.crt
 
 httpd_SSLCertificateKeyFile: /etc/pki/tls/private/ca.key
+

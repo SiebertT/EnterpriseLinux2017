@@ -1,4 +1,4 @@
-##! /usr/bin/bash
+#! /usr/bin/bash
 #
 # Author:   Bert Van Vreckem <bert.vanvreckem@gmail.com>
 #
@@ -32,7 +32,7 @@ Reset='\e[0m'
 
 # Usage: install_bats_if_needed
 install_bats_if_needed() {
-  pushd "${bats_install_dir}" > /dev/null
+  pushd "${bats_install_dir}/" > /dev/null
   if [[ ! -d "${bats_install_dir}/bats" ]]; then
     wget "${bats_url}"
     tar xf "${bats_archive}"
@@ -49,9 +49,7 @@ find_tests() {
     max_depth="-maxdepth $2"
   fi
 
-
-  local tests
-  tests=$(find "$1" ${max_depth} -type f -name "${test_file_pattern}" -printf '%p\n' 2> /dev/null)
+  local tests=$(find "$1" ${max_depth} -type f -name "${test_file_pattern}" -printf '%p\n' 2> /dev/null)
 
   echo "${tests}"
 }
@@ -62,7 +60,6 @@ install_bats_if_needed
 
 # List all test cases (i.e. files in the test dir matching the test file
 # pattern)
-
 # Tests to be run on all hosts
 global_tests=$(find_tests "${test_dir}" 1)
 
