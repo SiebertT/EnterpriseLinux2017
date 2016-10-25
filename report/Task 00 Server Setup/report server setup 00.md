@@ -1,7 +1,7 @@
 # Enterprise Linux Lab Report
 
-- Student name: 
-- Github repo: <https://github.com/HoGentTIN/elnx-USER.git>
+- Student name: Siebert Timmermans
+- Github repo: <https://github.com/HoGentTIN/elnx-sme-SiebertT/>
 
 The goal is to set the server up and take care of the Ansible role + variables for the servers to come.
 
@@ -15,7 +15,7 @@ The goal is to set the server up and take care of the Ansible role + variables f
 
 
 ## Procedure/Documentation Server Setup 00
-My documentation and code is written down in the [cheat sheet](https://github.com/HoGentTIN/elnx-sme-SiebertT/blob/master/report/cheat-sheet.md) for this task.
+My documentation and code is written down in the [cheat sheet](https://github.com/HoGentTIN/elnx-sme-SiebertT/blob/master/report/Task%2000%20Server%20Setup/cheat-sheet%20Server%20Setup00.md) for this task.
 
 For this task, the following steps were taken:
 
