@@ -1,7 +1,7 @@
 # Enterprise Linux Lab Report
 
-- Student name: 
-- Github repo: <https://github.com/HoGentTIN/elnx-USER.git>
+- Student name: [Siebert Timmermans](https://github.com/SiebertT) 
+- Github repo: <https://github.com/HoGentTIN/elnx-sme-SiebertT>
 
 The goal is to setup a Linux Lamp stack through Vagrant and Ansible. To achieve this a host .yml has to be configured with all the correct parts required. The certificates have to be configured as well for security.
 
