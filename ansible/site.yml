@@ -8,3 +8,7 @@
     - bertvv.httpd
     - bertvv.mariadb
     - bertvv.wordpress
+- hosts: pu001
+  sudo: true
+  roles: 
+    - bertvv.bind
