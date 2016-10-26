@@ -2,13 +2,20 @@
 # pw: letmein123
 ---
 - hosts: pu004
-  sudo: true
+  become: true
+  pre_tasks:
+    - name: copy certificate
+      copy: src=Files/ca.crt dest=/etc/pki/tls/certs/ca.crt
+    - name: copy certificate key
+      copy: src=Files/ca.key dest=/etc/pki/tls/private/ca.key
+      
   roles: 
     - bertvv.rh-base
     - bertvv.httpd
     - bertvv.mariadb
     - bertvv.wordpress
 - hosts: pu001
-  sudo: true
-  roles: 
+  become: true
+  roles:
+    - bertvv.rh-base
     - bertvv.bind

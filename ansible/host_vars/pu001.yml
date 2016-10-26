@@ -2,103 +2,100 @@
 # pw: letmein123
 ---
 
-- hosts: all
-  become: true
-  vars:
-    bind_acls:
-      - name: acl1
-        match_list:
-          - 192.168.56.0/24
-      - name: acl2
-        match_list:
-          - 192.168.56.0/24
-          - 172.16.0.0/16
-    bind_listen_ipv4:
-      - any
-    bind_listen_ipv6:
-      - any
-    bind_allow_query:
+bind_acls:
+  - name: acl1
+    match_list:
       - 192.168.56.0/24
-      - 127.0.0.0/8
-    bind_rrset_order: random
-    bind_recursion: false
+  - name: acl2
+    match_list:
+      - 192.168.56.0/24
+      - 172.16.0.0/16
+bind_listen_ipv4:
+  - any
+bind_listen_ipv6:
+  - any
+bind_allow_query:
+  - 192.168.56.0/24
+  - 127.0.0.0/8
+bind_rrset_order: random
+bind_recursion: false
 
-    bind_zone_name: avalon.lan
-    bind_zone_networks:
-      - '192.168.56'
-      - '172.16'
-    bind_zone_master_server_ip: 192.168.56.53
-    bind_zone_name_servers:
-      - testbindmaster
-      - testbindslave
-    bind_other_name_servers:
-      - ns1.isp.com
-      - ns2.isp.com
-    bind_zone_mail_servers:
-      - name: mail
-        preference: 10
-    bind_zone_hosts:
-      - name: testbindmaster
-        ip: 192.168.56.53
-        aliases:
-          - ns1
-      - name: testbindslave
-        ip: 192.168.56.54
-        aliases:
-          - ns2
-      - name: '@'
-        ip:
-          - 192.168.56.20
-          - 192.168.56.21
-        ipv6:
-          - 2001:db8::20
-          - 2001:db8::21
-        aliases:
-          - www
-      - name: mail
-        ip: 192.168.56.30
-        ipv6: 2001:db8::30
-        aliases:
-          - smtp
-          - imap
-      - name: dc001
-        ip: 192.168.56.40
-      - name: priv0001
-        ip: 172.16.0.10
-      - name: priv0002
-        ip: 172.16.0.11
-    bind_zone_services:
-      - name: _ldap._tcp
-        weight: 100
-        port: 88
-        target: dc001
-      - name: _kerberos._tcp
-        weight: 100
-        port: 88
-        target: dc001
-      - name: _kerberos._udp
-        weight: 100
-        port: 88
-        target: dc001
-      - name: _kerberos-master._tcp
-        weight: 100
-        port: 88
-        target: dc001
-      - name: _kerberos-master._udp
-        weight: 100
-        port: 88
-        target: dc001
-      - name: _kpasswd._tcp
-        weight: 100
-        port: 464
-        target: dc001
-      - name: _kpasswd._udp
-        weight: 100
-        port: 464
-        target: dc001
-    bind_zone_text:
-      - name: _kerberos
-        text: KERBEROS.EXAMPLE.COM
+bind_zone_name: avalon.lan
+bind_zone_networks:
+  - '192.168.56'
+  - '172.16'
+bind_zone_master_server_ip: 192.168.56.53
+bind_zone_name_servers:
+  - testbindmaster
+  - testbindslave
+bind_other_name_servers:
+  - ns1.isp.com
+  - ns2.isp.com
+bind_zone_mail_servers:
+  - name: mail
+    preference: 10
+bind_zone_hosts:
+  - name: testbindmaster
+    ip: 192.168.56.53
+    aliases:
+      - ns1
+  - name: testbindslave
+    ip: 192.168.56.54
+    aliases:
+      - ns2
+  - name: '@'
+    ip:
+      - 192.168.56.20
+      - 192.168.56.21
+    ipv6:
+      - 2001:db8::20
+      - 2001:db8::21
+    aliases:
+      - www
+  - name: mail
+    ip: 192.168.56.30
+    ipv6: 2001:db8::30
+    aliases:
+      - smtp
+      - imap
+  - name: dc001
+    ip: 192.168.56.40
+  - name: priv0001
+    ip: 172.16.0.10
+  - name: priv0002
+    ip: 172.16.0.11
+bind_zone_services:
+  - name: _ldap._tcp
+    weight: 100
+    port: 88
+    target: dc001
+  - name: _kerberos._tcp
+    weight: 100
+    port: 88
+    target: dc001
+  - name: _kerberos._udp
+    weight: 100
+    port: 88
+    target: dc001
+  - name: _kerberos-master._tcp
+    weight: 100
+    port: 88
+    target: dc001
+  - name: _kerberos-master._udp
+    weight: 100
+    port: 88
+    target: dc001
+  - name: _kpasswd._tcp
+    weight: 100
+    port: 464
+    target: dc001
+  - name: _kpasswd._udp
+    weight: 100
+    port: 464
+    target: dc001
+bind_zone_text:
+  - name: _kerberos
+    text: KERBEROS.EXAMPLE.COM
 
 
 

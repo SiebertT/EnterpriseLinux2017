@@ -107,3 +107,8 @@ This .yml file, in this case pu004.yml, will contain all the variables the VM ne
 
 Look up [this site](https://wiki.centos.org/HowTos/Https) for more information about the certificates.
 
+## Automation of the certificates
+1. In your VM, generate the certificate and keys like listed above
+2. Create a folder in your Ansible folder, copy the .crt and .key to it
+3. in your site.yml, add a pretask variable and add the copy statements to place the files in the new folder into the vm
+![](https://i.gyazo.com/ffb3ed6527beccacac5ef4630cca52e5.png)
