@@ -17,20 +17,13 @@ bind_allow_query:
 bind_listen_ipv4:
   - any
   
-
+rhbase_firewall_allow_services:
+  - dns
+  
 bind_zone_name_servers:
   - pu001
   - pu002
-  - pu003
-  - pu004
-  - pr001
-  - pr002
-  - pr010
-  - pr011
-
-bind_rrset_order: random
-bind_recursion: false
-      
+ 
 bind_zone_mail_servers:
   - name: pu003
     preference: 10
