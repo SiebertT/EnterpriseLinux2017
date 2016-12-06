@@ -1,3 +1,180 @@
-# pu001.yml
-# pw: letmein123
----
+rhbase_firewall_allow_services:
+  - samba
+  - ftp
+  
+samba_netbios_name: FILES
+
+samba_workgroup: AVALON
+
+samba_load_printers:
+  - false
+
+samba_shares_root: /srv/shares
+  
+rhbase_user_groups:
+  - management
+  - technical
+  - sales
+  - it
+
+samba_shares:
+  - name: public
+    comment: 'Public share, writeable by all members of group ‘users’'
+    public: yes
+    write_list: +users
+    valid_users: +users
+    setype: public_content_t
+  - name: management
+    comment: 'Completely inaccessible for employees outside of this unit'
+    write_list: +management
+    valid_users: +management
+    group: management
+  - name: technical
+    comment: 'Visible for employees outside their unit, but not writeable'
+    write_list: +technical
+    valid_users: +management,+sales,+it,+technical
+    group: technical
+  - name: sales
+    comment: 'Visible to management, not writeable'
+    write_list: +sales
+    group: sales
+    valid_users: +sales,+management
+  - name: it
+    comment: 'Visible to management, not writeable'
+    write_list: +it
+    valid_users: +it,+management
+    group: it
+
+ 
+    
+samba_load_home: true   
+
+rhbase_users:
+  - name: stevenh
+    comment: 'Steven Hermans'
+    groups:
+      - management
+      - users
+    password: stevenh
+  - name: stevenv
+    comment: 'Steven Van Daele'
+    groups:
+      - technical
+      - users
+    password: stevenv
+  - name: leend
+    comment: 'Leen De Meester'
+    groups:
+      - technical
+      - users
+    password: leend
+  - name: svena
+    comment: 'Sven Aerens'
+    groups:
+      - sales
+      - users
+    password: svena
+  - name: nehirb
+    comment: 'Nehir Baayar'
+    groups:
+      - it
+      - users
+    password: nehirb
+    shell: /bin/bash
+  - name: alexanderd
+    comment: 'Alexander De Coninck'
+    groups:
+      - technical
+      - users
+    password: alexanderd
+  - name: krisv
+    comment: 'Kris Vanhaverbeke'
+    groups:
+      - management
+      - users
+    password: krisv
+  - name: benoitp
+    comment: 'Benoit Pluquet'
+    groups:
+      - sales
+      - users
+    password: benoitp
+  - name: anc
+    comment: 'An Coppens'
+    groups:
+      - technical
+      - users
+    password: anc
+  - name: elenaa
+    comment: 'Elena Andreev'
+    groups:
+      - management
+      - users
+    password: elenaa
+  - name: evyt
+    comment: 'Evy Tilleman'
+    groups:
+      - technical
+      - users
+    password: evyt
+  - name: christophev
+    comment: 'Christophe Van der Meersche'
+    groups:
+      - it
+      - users
+    password: christophev
+    shell: /bin/bash
+  - name: stefaanv
+    comment: 'Stefaan Vernimmen'
+    groups:
+      - technical
+      - users
+    password: stefaanv
+  - name: siebert
+    comment: 'admin'
+    groups:
+      - it
+      - users
+      - wheel
+    password: '$6$mPMJMP2l9tQNa8Ww$9nQ0W7UyTpIccOyMI1SdlLEWqMZlXOTxI1IBCadY0SkcsHSdrCzetMxGWpzN.OFNROHX4sYwcxdtR8WlY38Q/.'
+    shell: /bin/bash    
+    
+
+samba_users:
+  - name: stevenh
+    password: stevenh
+  - name: stevenv
+    password: stevenv
+  - name: leend
+    password: leend
+  - name: svena
+    password: svena
+  - name: nehirb
+    password: nehirb
+  - name: alexanderd
+    password: alexanderd
+  - name: krisv
+    password: krisv
+  - name: benoitp
+    password: benoitp
+  - name: anc
+    password: anc
+  - name: elenaa
+    password: elenaa
+  - name: evyt
+    password: evyt
+  - name: christophev
+    password: christophev
+  - name: stefaanv
+    password: stefaanv
+  - name: siebert
+    password: letmein123
+
+    
+# vfstp config
+ 
+vsftpd_anon_root: false
+
+vsftpd_local_enable: true
+
+vsftpd_write_enable: true

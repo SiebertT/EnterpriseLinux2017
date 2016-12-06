@@ -21,9 +21,11 @@ rhbase_admin_user: siebert
 rhbase_users:
   - name: siebert
     comment: 'admin'
+    shell: /bin/bash
     groups:
       - wheel
-    password: '4ca7c5c27c2314eecc71f67501abb724'
+      - users
+    password: '$6$mPMJMP2l9tQNa8Ww$9nQ0W7UyTpIccOyMI1SdlLEWqMZlXOTxI1IBCadY0SkcsHSdrCzetMxGWpzN.OFNROHX4sYwcxdtR8WlY38Q/.'
     
    
 rhbase_motd: true

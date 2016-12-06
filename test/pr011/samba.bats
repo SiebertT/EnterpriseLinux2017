@@ -8,8 +8,8 @@
 sut_ip=172.16.0.11     # IP of the system under test
 sut_wins_name=FILES    # NetBIOS name
 workgroup=AVALON       # Workgroup
-admin_user=bert        # User with admin privileges
-admin_password=bert
+admin_user=siebert        # User with admin privileges
+admin_password=letmein123
 
 samba_share_root=/srv/shares # Root directory of shares
 # The name of a directory and file that will be created to test for
@@ -240,7 +240,6 @@ assert_group_write_dir() {
 }
 
 @test 'read access for share ‘management’' {
-  skip
   #                      Share      User          Password
   assert_no_read_access  management alexanderd    alexanderd
   assert_no_read_access  management anc           anc
@@ -259,7 +258,6 @@ assert_group_write_dir() {
 }
 
 @test 'write access for share ‘management’' {
-  skip
   #                      Share      User          Password
   assert_no_write_access management alexanderd    alexanderd
   assert_no_write_access management anc           anc
@@ -278,7 +276,6 @@ assert_group_write_dir() {
 }
 
 @test 'read access for share ‘technical’' {
-  skip
   #                      Share      User          Password
   assert_read_access     technical  alexanderd    alexanderd
   assert_read_access     technical  anc           anc
@@ -297,7 +294,6 @@ assert_group_write_dir() {
 }
 
 @test 'write access for share ‘technical’' {
-  skip
   #                      Share      User          Password
   assert_write_access    technical  alexanderd    alexanderd
   assert_write_access    technical  anc           anc
@@ -316,7 +312,6 @@ assert_group_write_dir() {
 }
 
 @test 'read access for share ‘sales’' {
-  skip
   #                      Share      User          Password
   assert_no_read_access  sales      alexanderd    alexanderd
   assert_no_read_access  sales      anc           anc
@@ -335,7 +330,6 @@ assert_group_write_dir() {
 }
 
 @test 'write access for share ‘sales’' {
-  skip
   #                      Share      User          Password
   assert_no_write_access sales      alexanderd    alexanderd
   assert_no_write_access sales      anc           anc
@@ -354,7 +348,6 @@ assert_group_write_dir() {
 }
 
 @test 'read access for share ‘it’' {
-  skip
   #                      Share      User          Password
   assert_no_read_access  it         alexanderd    alexanderd
   assert_no_read_access  it         anc           anc
@@ -373,7 +366,6 @@ assert_group_write_dir() {
 }
 
 @test 'write access for share ‘it’' {
-  skip
   #                      Share      User          Password
   assert_no_write_access it         alexanderd    alexanderd
   assert_no_write_access it         anc           anc

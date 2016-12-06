@@ -45,11 +45,11 @@ bind_zone_hosts:
     aliases:
       - mail
   - name: pr001
-    ip: 172.16.0.1
+    ip: 172.16.0.2
     aliases:
       - dhcp
   - name: pr002
-    ip: 172.16.0.2
+    ip: 172.16.0.3
     aliases:
       - directory
   - name: pr010
