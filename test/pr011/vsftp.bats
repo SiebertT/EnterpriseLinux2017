@@ -9,7 +9,7 @@
 #
 sut_ip=172.16.0.11   # IP of the System Under Test
 admin_user=siebert      # User with admin privileges
-admin_password=4ca7c5c27c2314eecc71f67501abb724
+admin_password=letmein123
 testfile="tst${RANDOM}"
 
 # Useful return codes

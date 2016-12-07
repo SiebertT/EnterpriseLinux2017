@@ -28,6 +28,7 @@ samba_shares:
     comment: 'Completely inaccessible for employees outside of this unit'
     write_list: +management
     valid_users: +management
+    directory_mode: '0770'
     group: management
   - name: technical
     comment: 'Visible for employees outside their unit, but not writeable'
@@ -55,81 +56,81 @@ rhbase_users:
     groups:
       - management
       - users
-    password: stevenh
+    password: '$6$m2yfsLpp9lZJVMcO$zJGaa4iNz2IKLf5tHbG7/h8LUwiX0DJWtlpTcTBT3nUPU0.JhaPMxBA8ZhxAJzI4JOZryLe1DLQyPs36YOD6V0'
   - name: stevenv
     comment: 'Steven Van Daele'
     groups:
       - technical
       - users
-    password: stevenv
+    password: '$6$7Zcz9qqO/Yw9ZDs6$N01TJlSUxT/u.AqHqB6MejQPHa.PcXqIBsRyWhVtUTN8o4Dk7kbpOHTIz2d4tLPRGGgu0RMTq3acg73Y5yy5q.'
   - name: leend
     comment: 'Leen De Meester'
     groups:
       - technical
       - users
-    password: leend
+    password: '$6$uqUFseJnaFihn92X$Ra5VOhTES0UILaXjGj3w447aCEqSWbNBe/HcQnytcpvRr0RpcvsAg6v1Xq5ta/BLu8aFQycJNcRhiUofusrIe1'
   - name: svena
     comment: 'Sven Aerens'
     groups:
       - sales
       - users
-    password: svena
+    password: '$6$xOoZ1CAHuDVfKARl$ADQrFr2sMA563f6aJ3ZtyVVR3NIs5JIOKEbj.AvkmtWKP4ccmqFZHe6P9MkwQaHI1Fpmu5vdzg2OGnBgmVw4w/'
   - name: nehirb
     comment: 'Nehir Baayar'
     groups:
       - it
       - users
-    password: nehirb
+    password: '$6$jh6CuYN9iZ2WSruM$VImiZwTzLFfOKqLwPrzeBZOozab4sHCz933PzbUIvvRsKd5RIZGjHzilJxmlyMMGyD/GcWn/IbtZ51JIdPLVC0'
     shell: /bin/bash
   - name: alexanderd
     comment: 'Alexander De Coninck'
     groups:
       - technical
       - users
-    password: alexanderd
+    password: '$6$/Wr/XSohzec25lSU$nqf2nYIasweqagR9mY/yxTfbhs.G.AGXjxvhTgUEKG6B0IEQoHs5qkjeCbo31HZd4BT/HsYh45HHYHQrkyu340'
   - name: krisv
     comment: 'Kris Vanhaverbeke'
     groups:
       - management
       - users
-    password: krisv
+    password: '$6$aQDXX7fqVRmQiVVa$HWBQ18Sy9LDkaBK4cU.2dK47XonS.VHWHVeASpsvZUqXymmZw7JoxtUDO0Cd8eryJ9d8uQwsmly3Rlpkz5RT7/'
   - name: benoitp
     comment: 'Benoit Pluquet'
     groups:
       - sales
       - users
-    password: benoitp
+    password: '$6$DF9ntBLdJk3BV6Ro$L9dGnCFHwJnF9cWC3wK9dA5OgXoH1Z/oGK5FG7QrfjO5qOvNkCfYyt1xC75OoaimOAZ5/vn14vOsJSJRLCHor/'
   - name: anc
     comment: 'An Coppens'
     groups:
       - technical
       - users
-    password: anc
+    password: '$6$unxQEYsndhmAyrQn$V.ch.joDaT1FrHoAZOrsM//BMaVYBUU9cZ/379z8fgR1fcETmESY4OS5mKgE4rPzXd5oSjoFrPF.tW2rt2wBF.'
   - name: elenaa
     comment: 'Elena Andreev'
     groups:
       - management
       - users
-    password: elenaa
+    password: '$6$QM1z7Nu1lX8wNue/$.0gX8dfR/IDpAGTFH1/7i9eSX2WsxpRVG5hOF0sibYAB4/.kSU7M0BaID76bx8v6si2ZDTvqPEouQnho3c6bT.'
   - name: evyt
     comment: 'Evy Tilleman'
     groups:
       - technical
       - users
-    password: evyt
+    password: '$6$LNEZwa9OA5/zw.yN$yhLhVcUp7HZxivrb511rVas.1DoJLDTskBWsS.R3QAg6S8UzIDDLlqwmij2UGz0ykpGXNT6pfsaSH8ixqzCpC0'
   - name: christophev
     comment: 'Christophe Van der Meersche'
     groups:
       - it
       - users
-    password: christophev
+    password: '$6$s1qif/EC6ISit7My$5OL/0flKUCU/bEevASZGilMb1GF13eF4aKE/iIbUlqHbCFhzGB2T8WL9WNrnjhB7rBhY5xJkxnfUF6aJMZ6/q1'
     shell: /bin/bash
   - name: stefaanv
     comment: 'Stefaan Vernimmen'
     groups:
       - technical
       - users
-    password: stefaanv
+    password: '$6$hZcgFNmatH774JTM$ETp/gb5eOAwHzg9xNQPC2V.kz6Loz0Eiv/rc3kntXRY1hiX.HcB73ShWj0J4kvBh8lvT/QwLN.mrVvrmQ2S5d0'
   - name: siebert
     comment: 'admin'
     groups:
@@ -178,3 +179,5 @@ vsftpd_anon_root: false
 vsftpd_local_enable: true
 
 vsftpd_write_enable: true
+
+vsftpd_local_root: /srv/shares
