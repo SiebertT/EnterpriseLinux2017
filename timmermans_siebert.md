@@ -1,11 +1,11 @@
 # Evaluatie Enterprise Linux
 
-| :---          | :---                     |
-| Student       | Siebert TIMMERMANS |
-| Klasgroep     | TIN-TI-3B                  |
-| Email         | <mailto:siebert.timmermans.x7889@student.hogent.be>         |
-| Hoofdopdracht | SME               |
-| Repo          | <https://github.com/HoGentTIN/elnx-sme-SiebertT>                 |
+| :---          | :---                                                |
+| Student       | Siebert TIMMERMANS                                  |
+| Klasgroep     | TIN-TI-3B                                           |
+| Email         | <mailto:siebert.timmermans.x7889@student.hogent.be> |
+| Hoofdopdracht | SME                                                 |
+| Repo          | <https://github.com/HoGentTIN/elnx-sme-SiebertT>    |
 
 ## Hoofdopdracht
 
@@ -52,9 +52,21 @@ Beoordeling voor deze opdracht: "Nog niet bekwaam" omdat niet aangetoond is dat 
 
 ### Tweede troubleshooting-opdracht
 
+- Transportlaag:
+    - Verwarring terminologie? "luisteren" betekent open socket, heeft niets met firewall te maken
+    - Gebruik `ss` in plaats van `netstat` (= deprecated)
+- Applicatielaag:
+    - Je ondervraagt de verkeerde DNS-server (die van HoGent). Leer je tools gebruiken!
+    - `listen-on` -> `any`!
+    - 6/8 tests slagen
+
+Eigenlijk is er niet aangetoond dat je de DNS-server vanaf het hostsysteem kan ondervragen, maar dit komt volgens mij enkel omdat je `nslookup` niet correct kan gebruiken. Voor zover ik kan zien in het verslag zou dit in principe moeten lukken.
+
+Beoordeling: Bekwaam
+
 ### Eindbeoordeling
 
-O2: <BEOORDELING>
+O2: Bekwaam
 
 ## Opdracht Actualiteit
 
@@ -62,8 +74,6 @@ Ubuntu-server op Azure met desktop-omgeving die je via RDP kan aanspreken
 
 - Gedetailleerd stappenplan voor aanmaken, configuratie security settings
 - Demo getoond, MATE desktop die op Azure draait
-
-Normaal is Azure h
 
 ### Eindbeoordeling
 
@@ -73,7 +83,11 @@ O3: <BEOORDELING>
 
 ### Laboverslagen
 
-R1: <BEOORDELING>
+- Gebruik Markdown "Fenced code blocks", geen screenshots!
+- Het is niet nodig om code te herhalen in verslag. Nadruk op testen!
+- Resultaten tests DNS? Verslag onvolledig!
+
+R1: Nog niet bekwaam
 
 ### Demonstraties
 
@@ -81,5 +95,8 @@ R2: <BEOORDELING>
 
 ### Cheat sheet
 
-R1: <BEOORDELING>
+- Aangevuld met eigen zaken
+- Vrij specifiek voor de labo's, niet algemeen bruikbaar.
+
+R1: Bekwaam
 
