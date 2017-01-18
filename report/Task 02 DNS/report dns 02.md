@@ -13,7 +13,7 @@ The goal of this task is to learn DNS configuration and the BIND role.
 - Log in to the server with `vagrant ssh pu001`
 - execute `dig @192.0.2.10 pu001.avalon.lan` or `dig @192.0.2.10 pu002.avalon.lan` on either machine
 - Run the test runbats.sh on both machines with sudo rights
-
+- Ping (and tracert) the DNS servers IP address at 192.0.2.10 from the host
 
 ## Procedure/Documentation DNS 02
 My documentation and code is written down in the [cheat sheet](https://github.com/HoGentTIN/elnx-sme-SiebertT/blob/master/report/Task%2002%20DNS/cheat-sheet%20dns%2002.md)
@@ -26,6 +26,7 @@ For this task, the following steps were taken:
 4. Add pu001 and pu002 to the vagrant_hosts.yml (master and slave)
 5. Configure pu001.yml and pu002.yml in host_vars with the correct variables found at [elnx-sme-SiebertT](https://github.com/HoGentTIN/elnx-sme-SiebertT)
 5. Run the test after you're connected to the server
+6. Ping the server from the host
 
 > In order to get the names and syntax of the variables right, check the role documentation carefully
 
@@ -249,7 +250,32 @@ pu001.avalon.lan.       604800  IN      A       192.0.2.10
 ;; MSG SIZE  rcvd: 111
 
 ```
+### Ping the server from host
 
+```
+Siebert@Laptop-Siebert MINGW64 ~
+$ ping 192.0.2.10
+
+Pinging 192.0.2.10 with 32 bytes of data:
+Reply from 192.0.2.10: bytes=32 time<1ms TTL=64
+Reply from 192.0.2.10: bytes=32 time<1ms TTL=64
+Reply from 192.0.2.10: bytes=32 time<1ms TTL=64
+Reply from 192.0.2.10: bytes=32 time<1ms TTL=64
+
+Ping statistics for 192.0.2.10:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+Siebert@Laptop-Siebert MINGW64 ~
+$ tracert 192.0.2.10
+
+Tracing route to 192.0.2.10 over a maximum of 30 hops
+
+  1    <1 ms    <1 ms    <1 ms  192.0.2.10
+
+Trace complete.
+```
 
 
 ## Resources
