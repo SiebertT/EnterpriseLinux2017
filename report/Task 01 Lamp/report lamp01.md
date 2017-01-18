@@ -1,6 +1,6 @@
 # Enterprise Linux Lab Report
 
-- Student name: [Siebert Timmermans](https://github.com/SiebertT) 
+- Student name: [Siebert Timmermans](https://github.com/SiebertT)
 - Github repo: <https://github.com/HoGentTIN/elnx-sme-SiebertT>
 
 The goal is to setup a Linux Lamp stack through Vagrant and Ansible. To achieve this a host .yml has to be configured with all the correct parts required. The certificates have to be configured as well for security.
@@ -27,7 +27,7 @@ For this task, the following steps were taken:
 	- the roles for this case were: httpd, mariadb, rh-base and wordpress by [bertvv](https://galaxy.ansible.com/bertvv/)
 2. Add the roles to site.yml
 3. Create a folder for the host variables in the Ansible folder.
-4. Add a .yml file in this new folder with the name of your host 
+4. Add a .yml file in this new folder with the name of your host
 	- in this case pu004.yml
 4. Add and configure the role variables in this new .yml file. Use the test documentation written by the maker of the roles.
 5. Generate and configure the certificates in the VM itself
@@ -40,7 +40,6 @@ For this task, the following steps were taken:
 > In order to get the names and syntax of the variables right, check the role documentation carefully
 
 ## Test report Lamp Stack 01
-Every lab report should contain a test plan. To give an idea of what is meant by this, a test plan for this assignment is given here.
 
 - On the host system, go to the local working directory of the project repository
 - Execute `vagrant status`
@@ -49,7 +48,7 @@ Every lab report should contain a test plan. To give an idea of what is meant by
     - The command should run without errors (exit status 0)
 - Log in on the server with `vagrant ssh pu004` and run the acceptance tests. They should succeed
 
-    
+
 
 Running test /vagrant/test/common.bats
 
@@ -63,7 +62,7 @@ Running test /vagrant/test/common.bats
 	 ✓ Wget should have been installed
 	 ✓ Admin user siebert should exist
 	 ✓ Custom /etc/motd should have been installed
-	
+
 	10 tests, 0 failures
 	Running test /vagrant/test/pu004/lamp.bats
 	 ✓ The necessary packages should be installed
@@ -78,7 +77,7 @@ Running test /vagrant/test/common.bats
 	 ✓ The website should be accessible through HTTP
 	 ✓ The website should be accessible through HTTPS
 	 ✓ The certificate should not be the default one
-	 ✓ The Wordpress install page should be visible under http://192.0.2.50/wordpres              s/
+	 ✓ The Wordpress install page should be visible under http://192.0.2.50/wordpress/
 	 ✓ MariaDB should not have a test database
 	 ✓ MariaDB should not have anonymous users
 

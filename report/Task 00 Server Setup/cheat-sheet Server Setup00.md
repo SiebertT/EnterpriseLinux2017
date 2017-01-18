@@ -1,6 +1,6 @@
 # Cheat sheets and checklists Server Setup00
 
-- Student name: [Siebert Timmermans](https://github.com/SiebertT) 
+- Student name: [Siebert Timmermans](https://github.com/SiebertT)
 - Github repo: [elnx-sme-SiebertT](https://github.com/HoGentTIN/elnx-sme-SiebertT)
 
 ## Basic commands
@@ -50,11 +50,12 @@ unders roles:, add -bertvv.rh-base
 This role has to be downloaded first under the folder /C/Users/Siebert/Documents/elnx-sme-SiebertT/ansible/roles.
 
 ## Downloading a role
-1. If you're on Windows, Ansible is not supported. Through a PowerShell script and a GitHub repository you can still get the role downloaded though. 
+1. If you're on Windows, Ansible is not supported. Through a PowerShell script and a GitHub repository you can still get the role downloaded though.
 2. Otherwise `ansible-galaxy install author.namerole`
 
 > Protip: if you're doing Ansible, go Linux
 
+> This role acts as a baseline for RedHat. It is here that we make our first preparations for the server and the servers to come.
 
 [Role download](https://github.com/bertvv/ansible-role-rh-base/releases)
 
@@ -67,13 +68,15 @@ Add the roles to rhbase_install_packages
 
 ## Create a user with the rhbase and make it an admin + add SSH
 
-Open all.yml, this configuration will count for all machines made.
+Open **all.yml**, this configuration will count for **all machines made from now on**. We make a **user** in the **admin** group with **root(wheel) priviliges**, an **SSH key** and an **encrypted password**.
 
-Make sure the admin password is set to an SSH key that you generated in git bash with keygen. You can find the ssh in your user folder at .ssh.
+Make sure the admin password is set to an **SSH key** that you generated in git bash with keygen. You can find the ssh in your user folder at .ssh. _Note that this is a manual task_, use `ssh-keygen -t rsa` for this.
 
 You shouldn't have the the password out there in plain text. Use a [MD5Generator](http://www.miraclesalad.com/webtools/md5.php) to hide the actual password.
 
 ![](https://i.gyazo.com/1e1d955c6b5c36fe08380e1dea0b821b.png)
+
+> Change the name 'bert' to your own. If you use the tests available in this repository, keep in mind that you need to change the variables in the tests as well for correct results.
 
 > The group 'wheel' makes the user automatically sudo in CentOS!
 
@@ -82,4 +85,4 @@ You shouldn't have the the password out there in plain text. Use a [MD5Generator
 ## Enable the custom MOTD that pops after login
 	rhbase_motd: true
 
-
+	This variable enables the already written in MOTD to show up after the login. In case you would want to change it, check out the config files available.
