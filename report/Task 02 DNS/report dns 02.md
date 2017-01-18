@@ -250,7 +250,7 @@ pu001.avalon.lan.       604800  IN      A       192.0.2.10
 ;; MSG SIZE  rcvd: 111
 
 ```
-### Ping the server from host
+### Ping (tracert) the server from host
 
 ```
 Siebert@Laptop-Siebert MINGW64 ~
