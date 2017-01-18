@@ -1,6 +1,6 @@
 # Enterprise Linux Lab Report Task 02 DNS
 
-- Student name: [Siebert Timmermans](https://github.com/SiebertT) 
+- Student name: [Siebert Timmermans](https://github.com/SiebertT)
 - Github repo: [elnx-sme-SiebertT](https://github.com/HoGentTIN/elnx-sme-SiebertT)
 
 The goal of this task is to learn DNS configuration and the BIND role.
@@ -42,17 +42,214 @@ Every lab report should contain a test plan. To give an idea of what is meant by
 - type `sudo ./test/runbats.sh`
 - Receive the following output:
 
-###For pu001
+> Mind the _sudo_ addition in order to make the test work.
 
-![](https://i.gyazo.com/97b67aefe7ce52a8705347f316aefb45.png)
+### Expected output for pu001
 
-![](https://i.gyazo.com/661236deb101232bc32b5aabdfccc072.png)
+```
+[vagrant@pu001 ~]$ sudo /vagrant/test/runbats.sh
+Running test /vagrant/test/common.bats
+✓ EPEL repository should be available
+✓ Bash-completion should have been installed
+✓ bind-utils should have been installed
+✓ Git should have been installed
+✓ Nano should have been installed
+✓ Tree should have been installed
+✓ Vim-enhanced should have been installed
+✓ Wget should have been installed
+✓ Admin user siebert should exist
+✓ Custom /etc/motd should have been installed
 
-###For pu002
+10 tests, 0 failures
+Running test /vagrant/test/pu001/masterdns.bats
+✓ The `dig` command should be installed
+✓ The main config file should be syntactically correct
+✓ The forward zone file should be syntactically correct
+✓ The reverse zone files should be syntactically correct
+✓ The service should be running
+✓ Forward lookups public servers
+✓ Forward lookups private servers
+✓ Reverse lookups public servers
+✓ Reverse lookups private servers
+✓ Alias lookups public servers
+✓ Alias lookups private servers
+✓ NS record lookup
+✓ Mail server lookup
 
-![](https://i.gyazo.com/95f77d943ad092e0c6b25d454c0226e2.png)
+13 tests, 0 failures
 
-![](https://i.gyazo.com/babcf37d68bdd594e9d696695c604cf6.png)
+```
+
+```
+[vagrant@pu001 ~]$ dig @192.0.2.10 pu002.avalon.lan
+
+; <<>> DiG 9.9.4-RedHat-9.9.4-29.el7_2.4 <<>> @192.0.2.10 pu002.avalon.lan
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 1313
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;pu002.avalon.lan.              IN      A
+
+;; ANSWER SECTION:
+pu002.avalon.lan.       604800  IN      A       192.0.2.11
+
+;; AUTHORITY SECTION:
+avalon.lan.             604800  IN      NS      pu001.avalon.lan.
+avalon.lan.             604800  IN      NS      pu002.avalon.lan.
+
+;; ADDITIONAL SECTION:
+pu001.avalon.lan.       604800  IN      A       192.0.2.10
+
+;; Query time: 0 msec
+;; SERVER: 192.0.2.10#53(192.0.2.10)
+;; WHEN: Wed Jan 18 14:46:37 UTC 2017
+;; MSG SIZE  rcvd: 111
+
+[vagrant@pu001 ~]$ dig @192.0.2.10 pu001.avalon.lan
+
+; <<>> DiG 9.9.4-RedHat-9.9.4-29.el7_2.4 <<>> @192.0.2.10 pu001.avalon.lan
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 62067
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;pu001.avalon.lan.              IN      A
+
+;; ANSWER SECTION:
+pu001.avalon.lan.       604800  IN      A       192.0.2.10
+
+;; AUTHORITY SECTION:
+avalon.lan.             604800  IN      NS      pu002.avalon.lan.
+avalon.lan.             604800  IN      NS      pu001.avalon.lan.
+
+;; ADDITIONAL SECTION:
+pu002.avalon.lan.       604800  IN      A       192.0.2.11
+
+;; Query time: 0 msec
+;; SERVER: 192.0.2.10#53(192.0.2.10)
+;; WHEN: Wed Jan 18 14:47:23 UTC 2017
+;; MSG SIZE  rcvd: 111
+
+```
+
+### Expected output for pu002
+
+```
+$ vagrant ssh pu002
+Last login: Tue Dec  6 20:14:56 2016 from 10.0.2.2
+Welcome to pu002..
+enp0s3     : 10.0.2.15         fe80::a00:27ff:febb:91b7/64
+enp0s8     : 192.0.2.11        fe80::a00:27ff:fe9a:8fe6/64
+[vagrant@pu002 ~]$ sudo /vagrant/test/runbats.sh
+Running test /vagrant/test/common.bats
+ ✓ EPEL repository should be available
+ ✓ Bash-completion should have been installed
+ ✓ bind-utils should have been installed
+ ✓ Git should have been installed
+ ✓ Nano should have been installed
+ ✓ Tree should have been installed
+ ✓ Vim-enhanced should have been installed
+ ✓ Wget should have been installed
+ ✓ Admin user siebert should exist
+ ✓ Custom /etc/motd should have been installed
+
+10 tests, 0 failures
+Running test /vagrant/test/pu002/slavedns.bats
+ ✓ The `dig` command should be installed
+ ✓ The main config file should be syntactically correct
+ ✓ The server should be set up as a slave
+ ✓ The server should forward requests to the master server
+ ✓ There should not be a forward zone file
+ ✓ The service should be running
+ ✓ Forward lookups public servers
+ ✓ Forward lookups private servers
+ ✓ Reverse lookups public servers
+ ✓ Reverse lookups private servers
+ ✓ Alias lookups public servers
+ ✓ Alias lookups private servers
+ ✓ NS record lookup
+ ✓ Mail server lookup
+
+14 tests, 0 failures
+
+```
+
+```
+[vagrant@pu002 ~]$ dig @192.0.2.10 pu001.avalon.lan
+
+; <<>> DiG 9.9.4-RedHat-9.9.4-29.el7_2.4 <<>> @192.0.2.10 pu001.avalon.lan
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 27972
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;pu001.avalon.lan.              IN      A
+
+;; ANSWER SECTION:
+pu001.avalon.lan.       604800  IN      A       192.0.2.10
+
+;; AUTHORITY SECTION:
+avalon.lan.             604800  IN      NS      pu001.avalon.lan.
+avalon.lan.             604800  IN      NS      pu002.avalon.lan.
+
+;; ADDITIONAL SECTION:
+pu002.avalon.lan.       604800  IN      A       192.0.2.11
+
+;; Query time: 0 msec
+;; SERVER: 192.0.2.10#53(192.0.2.10)
+;; WHEN: Wed Jan 18 14:58:23 UTC 2017
+;; MSG SIZE  rcvd: 111
+```
+
+```
+[vagrant@pu002 ~]$ dig @192.0.2.10 pu002.avalon.lan
+
+; <<>> DiG 9.9.4-RedHat-9.9.4-29.el7_2.4 <<>> @192.0.2.10 pu002.avalon.lan
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 56053
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 2
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;pu002.avalon.lan.              IN      A
+
+;; ANSWER SECTION:
+pu002.avalon.lan.       604800  IN      A       192.0.2.11
+
+;; AUTHORITY SECTION:
+avalon.lan.             604800  IN      NS      pu001.avalon.lan.
+avalon.lan.             604800  IN      NS      pu002.avalon.lan.
+
+;; ADDITIONAL SECTION:
+pu001.avalon.lan.       604800  IN      A       192.0.2.10
+
+;; Query time: 0 msec
+;; SERVER: 192.0.2.10#53(192.0.2.10)
+;; WHEN: Wed Jan 18 15:00:19 UTC 2017
+;; MSG SIZE  rcvd: 111
+
+```
+
 
 
 ## Resources
