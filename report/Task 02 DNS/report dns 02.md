@@ -5,7 +5,7 @@
 
 The goal of this task is to learn DNS configuration and the BIND role.
 
-## Test plan DNS task 02
+## Test plan DNS 02
 
 - Execute `vagrant status`
 - Execute `vagrant up pu001`
@@ -31,7 +31,7 @@ For this task, the following steps were taken:
 > In order to get the names and syntax of the variables right, check the role documentation carefully
 
 
-## Test report Server Setup 00
+## Test report DNS 02
 Every lab report should contain a test plan. To give an idea of what is meant by this, a test plan for this assignment is given here.
 
 - On the host system, go to the local working directory of the project repository
