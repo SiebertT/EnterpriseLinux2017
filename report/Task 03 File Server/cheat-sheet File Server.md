@@ -269,10 +269,12 @@ samba_users:
 
 ### Finish with the vfstp configuration
 
-vsftpd_anon_root: false // directory for guest users, defaults to the home of the ftp user
-
-vsftpd_local_enable: true // permits logins from registered users
-
-vsftpd_write_enable: true // allows FTP commands to change the file structure
-
-vsftpd_local_root: /srv/shares // Directory for registered users. Defaults to their home directory.
+```
+vsftpd_anonymous_enable: false  // anonymous logins are not permitted
+vsftpd_connect_from_port_20: true // Port style data uses port 20 on the server machine
+vsftpd_local_enable: true // logins from registered users are allowed
+vsftpd_listen: true // runs vsftpd in standalone, ipv6 listen needs to be false because this is true
+vsftpd_listen_ipv6: false
+vsftpd_write_enable: true // FTP commands are allowed to change the filesystem
+vsftpd_local_root: /srv/shares // this is the directory for registered users, defaults to their home directory
+```
