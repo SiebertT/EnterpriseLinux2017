@@ -1,7 +1,7 @@
 rhbase_firewall_allow_services:
   - samba
   - ftp
-  
+
 samba_netbios_name: FILES
 
 samba_workgroup: AVALON
@@ -10,7 +10,7 @@ samba_load_printers:
   - false
 
 samba_shares_root: /srv/shares
-  
+
 rhbase_user_groups:
   - management
   - technical
@@ -46,9 +46,9 @@ samba_shares:
     valid_users: +it,+management
     group: it
 
- 
-    
-samba_load_home: true   
+
+
+samba_load_home: true
 
 rhbase_users:
   - name: stevenh
@@ -138,8 +138,8 @@ rhbase_users:
       - users
       - wheel
     password: '$6$mPMJMP2l9tQNa8Ww$9nQ0W7UyTpIccOyMI1SdlLEWqMZlXOTxI1IBCadY0SkcsHSdrCzetMxGWpzN.OFNROHX4sYwcxdtR8WlY38Q/.'
-    shell: /bin/bash    
-    
+    shell: /bin/bash
+
 
 samba_users:
   - name: stevenh
@@ -171,13 +171,13 @@ samba_users:
   - name: siebert
     password: letmein123
 
-    
+
 # vfstp config
- 
-vsftpd_anon_root: false
 
+vsftpd_anonymous_enable: false
+vsftpd_connect_from_port_20: true
 vsftpd_local_enable: true
-
+vsftpd_listen: true
+vsftpd_listen_ipv6: false
 vsftpd_write_enable: true
-
 vsftpd_local_root: /srv/shares

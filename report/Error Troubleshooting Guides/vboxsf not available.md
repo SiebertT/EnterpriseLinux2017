@@ -1,12 +1,12 @@
 # Error troubleshooting guide: VBoxSF not available when using latest version of VirtualBox (at moment of writing 5.1.14)
 
-This guide is meant to help users that struggling to `vagrant up` because of a mismatched Guest Addition error
+This guide is meant to help users that are struggling to `vagrant up` because of a mismatched Guest Addition error
 
 The error may look like the following:
 
 ![](https://i.gyazo.com/15a173666f448ce166661855bd36085f.png)
 
-It appears this error is caused by an outdated kernel. This causes `vboxadd.sh` to fail setting up the **vboxadd service**
+It appears this error is caused by an outdated **kernel-devel**. This causes `vboxadd.sh` to fail setting up the **vboxadd service**
 
 It can be fixed by entering your guest virtual machine and updating.
 
