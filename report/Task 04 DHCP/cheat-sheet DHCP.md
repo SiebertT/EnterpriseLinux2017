@@ -68,7 +68,7 @@ Create a new .yml file named pr001.yml. Our configuration will go here.
 ## Configure pr011.yml
 In this Ansible configuration file we will be configuring the DHCP role to our needs.
 
-### Subnet berekening
+### Subnet Calculation
 
 #### SUBNET 0
 **RANGE**: 172.16.0.2 -> 172.16.127.254
@@ -100,10 +100,49 @@ In this Ansible configuration file we will be configuring the DHCP role to our n
 **BROAD**: 172.16.255.255 MAAR GATEWAY is 172.16.255.254
 
 
-
-
-
 #### IN MACHINE:
 
 enp0s3: 10.0.2.15/24
 enp0s8: 172.16.0.2/24
+
+### pr001.yml config
+
+```
+dhcp_subnets: // add subnets
+
+  - ip: 172.16.0.0 // subnet 0
+    netmask: 255.255.128.0
+    domain_name_servers:
+          - 192.0.2.10
+          - 192.0.2.11
+    range_begin: 172.16.0.2
+    range_end: 172.16.127.254
+    max_lease_time: 43300
+
+  - ip: 172.16.128.0 // subnet 1
+    netmask: 255.255.192.0
+    domain_name_servers:
+          - 192.0.2.10
+          - 192.0.2.11
+    range_begin: 172.16.128.1
+    range_end: 172.16.191.254
+    max_lease_time: 43300
+
+  - ip: 172.16.192.0 // subnet 2
+    netmask: 255.255.192.0
+    domain_name_servers:
+          - 192.0.2.10
+          - 192.0.2.11
+    range_begin: 172.16.192.1
+    range_end: 172.16.255.253
+    routers: 172.16.255.254 // gateway
+    max_lease_time: 14400
+
+
+dhcp_global_domain_name: avalon.lan // domain name
+dhcp_global_domain_name_servers: // DNS servers
+      - 8.8.8.8
+      - 8.8.4.4
+dhcp_global_routers: 192.0.2.254 // DMZ
+
+```
