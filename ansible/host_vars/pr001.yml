@@ -22,6 +22,9 @@ dhcp_subnets:
     - name: pr011
       mac: '08:00:27:DE:8D:BB'
       ip: 172.16.0.11
+    - name: pr001
+      mac: '08:00:27:32:7C:CC'
+      ip: 172.16.0.2
       pools: 
           -  max_lease_time: 43200
              range_begin: 172.16.128.1
