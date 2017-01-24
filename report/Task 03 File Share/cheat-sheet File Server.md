@@ -1,4 +1,4 @@
-# Cheat sheets and checklists Server Setup00
+# Cheat sheets and checklists File Share task 03
 
 - Student name: [Siebert Timmermans](https://github.com/SiebertT)
 - Github repo: [elnx-sme-SiebertT](https://github.com/HoGentTIN/elnx-sme-SiebertT)
