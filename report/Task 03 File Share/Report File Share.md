@@ -23,6 +23,7 @@ Goal is to use SAMBA and VSFTPD services to create a fileshare server with Ansib
 - Check if a user from the group sales can reach the sales share by typing `smbclient //files/sales -Usvena%svena`, you should be able to access, read and write on this share.
 - Check if a user from management has no write rights on the it share by typing  `smbclient //files/it -Ustevenh%stevenh` you should be able to use `ls` but `md test` should give a **STATUS_MEDIA_WRITE_PROTECTED** error
 - Make sure an unregistered user cannot login to the public share by typing `smbclient //files/public -U%`, this should give a **NT_STATUS_ACCESS_DENIED**
+- Open your Windows Explorer, type `\\172.16.0.11` in the address bar. You should be prompted to login with a user and you can manipulate the the files your user has the rights for.
 
 ### VSFTPD
 
@@ -237,6 +238,9 @@ tree connect failed: NT_STATUS_ACCESS_DENIED
 [vagrant@pr011 ~]$
 
 ```
+
+![](https://i.gyazo.com/061834ede9fc89dc4ed3a5664b3fc077.png)
+
 
 ### VSFTPD
 

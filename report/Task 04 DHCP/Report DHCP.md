@@ -37,21 +37,28 @@ For this task, the following steps were taken:
 ## Test report Task 04 - DHCP
 
 ```
+$ vagrant ssh pr001
+Last login: Tue Jan 24 11:36:15 2017 from 10.0.2.2
+Welcome to pr001..
+enp0s3     : 10.0.2.15         fe80::a00:27ff:fe8e:91e0/64
+enp0s8     : 172.16.0.2        fe80::a00:27ff:fe32:7ccc/64
 [vagrant@pr001 ~]$ sudo nmap --script broadcast-dhcp-discover -e enp0s8
 
-Starting Nmap 6.40 ( http://nmap.org ) at 2017-01-24 02:00 UTC
+Starting Nmap 6.40 ( http://nmap.org ) at 2017-01-24 11:50 UTC
 Pre-scan script results:
 | broadcast-dhcp-discover:
-|   IP Offered: 172.16.0.3
+|   IP Offered: 172.16.222.41
 |   DHCP Message Type: DHCPOFFER
 |   Server Identifier: 172.16.0.2
 |   IP Address Lease Time: 0 days, 0:05:00
-|   Subnet Mask: 255.255.128.0
-|   Router: 192.0.2.254
+|   Subnet Mask: 255.255.0.0
+|   Router: 172.16.255.254
 |   Domain Name Server: 192.0.2.10, 192.0.2.11
 |_  Domain Name: avalon.lan
 WARNING: No targets were specified, so 0 hosts scanned.
 Nmap done: 0 IP addresses (0 hosts up) scanned in 1.06 seconds
+[vagrant@pr001 ~]$
+
 ```
 
 

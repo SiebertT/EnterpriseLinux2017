@@ -108,41 +108,41 @@ enp0s8: 172.16.0.2/24
 ### pr001.yml config
 
 ```
-dhcp_subnets: // add subnets
+dhcp_subnets:
 
-  - ip: 172.16.0.0 // subnet 0
-    netmask: 255.255.128.0
+  - ip: 172.16.0.0 // top subnet
+    netmask: 255.255.0.0
     domain_name_servers:
           - 192.0.2.10
           - 192.0.2.11
-    range_begin: 172.16.0.2
-    range_end: 172.16.127.254
-    max_lease_time: 43300
-
-  - ip: 172.16.128.0 // subnet 1
-    netmask: 255.255.192.0
-    domain_name_servers:
-          - 192.0.2.10
-          - 192.0.2.11
-    range_begin: 172.16.128.1
-    range_end: 172.16.191.254
-    max_lease_time: 43300
-
-  - ip: 172.16.192.0 // subnet 2
-    netmask: 255.255.192.0
-    domain_name_servers:
-          - 192.0.2.10
-          - 192.0.2.11
-    range_begin: 172.16.192.1
-    range_end: 172.16.255.253
-    routers: 172.16.255.254 // gateway
+    range_begin: 172.16.192.1 // dynamic range
+    range_end: 172.16.255.253 // dynamic range
     max_lease_time: 14400
+    routers: 172.16.255.254
+    hosts: // excluded fixed hosts
+    - name: pu001
+      mac: '08:00:27:16:C2:6C'
+      ip: 192.0.2.10
+    - name: pu002
+      mac: '08:00:27:54:01:0E'
+      ip: 192.0.2.11
+    - name: pu004
+      mac: '08:00:27:0C:36:09'
+      ip: 192.0.2.50
+    - name: pr011
+      mac: '08:00:27:DE:8D:BB'
+      ip: 172.16.0.11
+      pools:
+          -  max_lease_time: 43200
+             range_begin: 172.16.128.1
+             range_end: 172.16.255.253
 
 
-dhcp_global_domain_name: avalon.lan // domain name
-dhcp_global_domain_name_servers: // DNS servers
+
+dhcp_global_domain_name: avalon.lan
+dhcp_global_domain_name_servers: // DNS
       - 8.8.8.8
       - 8.8.4.4
-dhcp_global_routers: 192.0.2.254 // DMZ
+dhcp_global_routers: 192.0.2.254 //gateway
 
 ```
