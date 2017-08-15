@@ -1,4 +1,0 @@
-# roles/dhcp/defaults/main.yml
----
-
-dhcp_subnets: []

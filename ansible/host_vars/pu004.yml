@@ -4,11 +4,9 @@
 rhbase_firewall_allow_services:
   - http
   - https
-  
-httpd_scripting: 'php'
    
 mariadb_databases:
-  - siebsdb
+  - name: siebsdb
   
 mariadb_users:
   - name: siebert
@@ -23,18 +21,6 @@ wordpress_user: siebert
 
 wordpress_password: '4ca7c5c27c2314eecc71f67501abb724'
 
-wordpress_plugins:
-  - name: wp-super-cache
-    version: 1.4.5
-  - name: jetpack
-    version: 3.7.2
-  - name: lipsum
-  
-wordpress_themes:
-  - name: xcel
-    version: 1.0.9
-
-    
 httpd_SSLCertificateFile:  /etc/pki/tls/certs/ca.crt
 
 httpd_SSLCertificateKeyFile: /etc/pki/tls/private/ca.key

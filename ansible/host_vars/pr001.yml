@@ -1,39 +1,31 @@
-dhcp_subnets:
+rhbase_install_packages:
+  - dhcp
 
+rhbase_firewall_allow_services:
+  - dhcp
+  
+dhcp_global_domain_name: avalon.lan
+
+dhcp_global_domain_name_servers:
+  - 192.0.2.10
+  - 192.0.2.11
+  
+dhcp_subnets:
   - ip: 172.16.0.0
     netmask: 255.255.0.0
-    domain_name_servers:
-          - 192.0.2.10
-          - 192.0.2.11
-    range_begin: 172.16.192.1
-    range_end: 172.16.255.253
-    max_lease_time: 14400
-    routers: 172.16.255.254
+    max_lease_time: 43200
     hosts:
-    - name: pu001
-      mac: '08:00:27:16:C2:6C'
-      ip: 192.0.2.10
-    - name: pu002
-      mac: '08:00:27:54:01:0E'
-      ip: 192.0.2.11
-    - name: pu004
-      mac: '08:00:27:0C:36:09'
-      ip: 192.0.2.50
-    - name: pr011
-      mac: '08:00:27:DE:8D:BB'
-      ip: 172.16.0.11
-    - name: pr001
-      mac: '08:00:27:32:7C:CC'
-      ip: 172.16.0.2
-      pools: 
-          -  max_lease_time: 43200
-             range_begin: 172.16.128.1
-             range_end: 172.16.255.253
-
-
-
-dhcp_global_domain_name: avalon.lan
-dhcp_global_domain_name_servers:
-      - 8.8.8.8
-      - 8.8.4.4
-dhcp_global_routers: 192.0.2.254
+      - name: enp0s3
+        mac: '08:00:27:85:03:66'
+        ip: 172.16.128.2
+        default_lease_time: 43200
+    pools:
+      - default_lease_time: 14400
+        range_begin: 172.16.192.1
+        range_end: 172.16.255.253
+        allow: unknown-clients
+        
+dhcp_hosts:
+  - name: cl1
+    mac: '08:00:27:85:03:66'
+    ip: 172.16.128.2

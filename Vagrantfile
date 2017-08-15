@@ -77,7 +77,23 @@ end
 # }}}
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.ssh.insert_key = false
+  hosts.each do |host|
+    config.ssh.insert_key = false
+    config.vm.define host['name'] do |node|
+      node.vm.box = host['box'] ||= DEFAULT_BASE_BOX
+      node.vm.box_url = host['box_url'] if host.key? 'box_url'
+
+      node.vm.hostname = host['name']
+      node.vm.network :private_network, network_options(host)
+      custom_synced_folders(node.vm, host)
+
+      node.vm.provider :virtualbox do |vb|
+        # WARNING: if the name of the current directory is the same as the
+        # host name, this will fail.
+        vb.customize ['modifyvm', :id, '--groups', PROJECT_NAME]
+      end
+    end
+  end
   # VyOS Router
   config.vm.define 'router' do |router|
     router.vm.box = 'bertvv/vyos116'
@@ -93,22 +109,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     router.vm.provision "shell" do |sh|
       sh.path = "scripts/router-config.sh"
-    end
-  end
-  hosts.each do |host|
-    config.vm.define host['name'] do |node|
-      node.vm.box = host['box'] ||= DEFAULT_BASE_BOX
-      node.vm.box_url = host['box_url'] if host.key? 'box_url'
-
-      node.vm.hostname = host['name']
-      node.vm.network :private_network, network_options(host)
-      custom_synced_folders(node.vm, host)
-
-      node.vm.provider :virtualbox do |vb|
-        # WARNING: if the name of the current directory is the same as the
-        # host name, this will fail.
-        vb.customize ['modifyvm', :id, '--groups', PROJECT_NAME]
-      end
     end
   end
   provision_ansible(config)

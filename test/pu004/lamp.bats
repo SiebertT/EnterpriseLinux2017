@@ -20,7 +20,7 @@ wordpress_password=4ca7c5c27c2314eecc71f67501abb724
 
 @test 'The necessary packages should be installed' {
   rpm -q httpd
-  rpm -q mariadb-server
+  rpm -q MariaDB-server
   rpm -q wordpress
   rpm -q php
   rpm -q php-mysql
