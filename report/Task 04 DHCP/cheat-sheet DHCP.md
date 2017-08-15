@@ -27,26 +27,26 @@ Simple workflow for a personal project without other contributors:
 2. Is the router/default gateway correct? `ip r -n`
 3. Is a DNS-server available? `cat /etc/resolv.conf`
 
-## Add Samba/Vsftpd roles to pr011 in site.yml
-open site.yml in notepad ++
+## Add DHCP role to pr001 in site.yml
+open site.yml in notepad ++ or your text editor
 
-under the new host pr011, under roles, Add:
+For the new host, pr001,  Add:
 
 	- hosts: pr001
-  	become: true
-  	roles:
+	  become: true
+	  roles:
 	    - bertvv.rh-base
 	    - bertvv.dhcp
 
 
 > make sure there are 2 spaces infront of any added role
 
-This role has to be downloaded first under the folder /C/Users/Siebert/Documents/elnx-sme-SiebertT/ansible/roles.
+This role has to be downloaded first under the folder _.../ansible/roles_
 
 ## Downloading a role
 For Windows, download the scripts from a GitHub Repository as a .zip and place them in the roles folder in the ansible folder.
 
-now run the `roles-deps.sh` script from the directory of the project (Users/Documents/elnx-sme-SiebertT)
+now run the `roles-deps.sh` script from the directory of the project through your CLI (Users/Documents/elnx-sme-SiebertT)
 
 You can find the DHCP role [here](https://github.com/bertvv/ansible-role-dhcp)
 
@@ -55,9 +55,11 @@ You can find the DHCP role [here](https://github.com/bertvv/ansible-role-dhcp)
 Navigate to the `vagrant-hosts.yml`
 
 Add:
-
 	- name: pr001
 	  ip: 172.16.0.2
+	  netmask: 255.255.0.0
+
+For the DHCP server, the netmask needs to be clarified manually, for the servers before this, this was default.
 
 ## Add pr011 to the hosts_vars file
 
@@ -65,84 +67,54 @@ Navigate to the `host_vars` folder in Ansible folder.
 
 Create a new .yml file named pr001.yml. Our configuration will go here.
 
-## Configure pr011.yml
+## Configure pr001.yml
 In this Ansible configuration file we will be configuring the DHCP role to our needs.
-
-### Subnet Calculation
-
-#### SUBNET 0
-**RANGE**: 172.16.0.2 -> 172.16.127.254
-
-**MASK**: 255.255.128.0
-
-**NETWORK**:172.16.0.0
-**BROAD**:172.16.127.255
-
-#### SUBNET 1
-**RANGE**:172.16.128.1 -> 172.16.191.254
-
-**MASK**: 255.255.192.0
-
-**NETWORK**: 172.16.128.0
-**BROAD**: 172.16.191.255
-
-1111 1111 . 1111 1111 . 11|00 0000 . 0000 0000
-
-2^6 = 64
-
-#### SUBNET 2
-
-**RANGE**: 172.16.192.1 -> 172.16.255.253 ! RANGE KLEINER DAN SUBNET
-
-**MASK**: 255.255.192.0
-
-**NETWORK**: 172.16.192.0
-**BROAD**: 172.16.255.255 MAAR GATEWAY is 172.16.255.254
-
-
-#### IN MACHINE:
-
-enp0s3: 10.0.2.15/24
-enp0s8: 172.16.0.2/24
 
 ### pr001.yml config
 
 ```
 dhcp_subnets:
 
-  - ip: 172.16.0.0 // top subnet
-    netmask: 255.255.0.0
-    domain_name_servers:
-          - 192.0.2.10
-          - 192.0.2.11
-    range_begin: 172.16.192.1 // dynamic range
-    range_end: 172.16.255.253 // dynamic range
-    max_lease_time: 14400
-    routers: 172.16.255.254
-    hosts: // excluded fixed hosts
-    - name: pu001
-      mac: '08:00:27:16:C2:6C'
-      ip: 192.0.2.10
-    - name: pu002
-      mac: '08:00:27:54:01:0E'
-      ip: 192.0.2.11
-    - name: pu004
-      mac: '08:00:27:0C:36:09'
-      ip: 192.0.2.50
-    - name: pr011
-      mac: '08:00:27:DE:8D:BB'
-      ip: 172.16.0.11
-      pools:
-          -  max_lease_time: 43200
-             range_begin: 172.16.128.1
-             range_end: 172.16.255.253
+rhbase_install_packages: // installs the DHCP package
+  - dhcp
 
+rhbase_firewall_allow_services: // allows the DHCP services through the firewall
+  - dhcp
 
+dhcp_global_domain_name: avalon.lan  // specifies the global domain name as 'avalon.lan'
 
-dhcp_global_domain_name: avalon.lan
-dhcp_global_domain_name_servers: // DNS
-      - 8.8.8.8
-      - 8.8.4.4
-dhcp_global_routers: 192.0.2.254 //gateway
+dhcp_global_domain_name_servers: // specifies the global DNS serves by IP, this is pu001 and pu002's IP
+  - 192.0.2.10
+  - 192.0.2.11
+
+dhcp_subnets: // specifies the subnets available to the DHCP server
+  - ip: 172.16.0.0
+    netmask: 255.255.0.0 // range of 172.16.0.1 -> 172.16.255.254 overall
+    max_lease_time: 43200 // lease time for provided IPs
+    hosts: // statically specify the interface with provided MAC address to be given the specified IP
+      - name: enp0s3
+        mac: '08:00:27:85:03:66'
+        ip: 172.16.128.2
+        default_lease_time: 43200
+    pools: // pool of IPs that can be dynamically allocated to interfaces
+      - default_lease_time: 14400
+        range_begin: 172.16.192.1
+        range_end: 172.16.255.253
+        allow: unknown-clients
+
+dhcp_hosts: // pinpoints the static DHCP allocation for the specified interface
+  - name: cl1
+    mac: '08:00:27:85:03:66'
+    ip: 172.16.128.2
+
 
 ```
+
+## Set up test environment with VirtualBox
+
+1. Set up a Linux distribution by adding an .ISO through the settings. In this case, a Fedora distribution is used
+2. Navigate to the network settings of your newly created VM
+3. Make Adapter 1 and Adapter 2 host only, so they can receive DHCP addresses
+4. Click the 'Advanced' dropdown menu on one of the adapters. Copy paste the MAC address there.
+5. In the pr001.yml file, paste down the MAC address at the static host allocation. Mind the `:`'s inbetween every 2 characters.
+6. Enter your newly set up VM, check out the IP addresses provided either through CLI by using `ip a` or through the GUI. It should be the static address 172.16.128.2 and a dynamic one.
