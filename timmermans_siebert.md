@@ -32,7 +32,17 @@
 
 ### Eindbeoordeling
 
-O1: <BEOORDELING>
+- Fileserver: ok
+    - beschikbaar vanop hostsysteem
+- DHCP-configuratie:
+    - DHCP-server is bereikbaar, aangetoond via `nmap`
+    - Niet helemaal correct:
+        - Host-declaraties in ander subnet
+        - DNS-servers: eigen autoritative servers gebruikt, d.w.z. dat werkstations enkel binnen het eigen netwerk kunnen surfen, nooit naar buiten
+- Router niet gerealiseerd
+- Werkstation niet gerealiseerd
+
+O1: Nog niet bekwaam
 
 ## Troubleshooting
 
@@ -77,7 +87,7 @@ Ubuntu-server op Azure met desktop-omgeving die je via RDP kan aanspreken
 
 ### Eindbeoordeling
 
-O3: <BEOORDELING>
+O3: Deskundig
 
 ## Rapportering
 
@@ -85,18 +95,18 @@ O3: <BEOORDELING>
 
 - Gebruik Markdown "Fenced code blocks", geen screenshots!
 - Het is niet nodig om code te herhalen in verslag. Nadruk op testen!
-- Resultaten tests DNS? Verslag onvolledig!
+- Gedetailleerde verslagen, testplan/rapport
 
-R1: Nog niet bekwaam
+R1: Deskundig
 
 ### Demonstraties
 
-R2: <BEOORDELING>
+R2: Gevorderd
 
 ### Cheat sheet
 
 - Aangevuld met eigen zaken
 - Vrij specifiek voor de labo's, niet algemeen bruikbaar.
 
-R1: Bekwaam
+R3: Bekwaam
 
