@@ -38,12 +38,15 @@ For this task, the following steps were taken:
       17. Allow unknown clients, so it is accessible to workstations
   18. Set the static DHCP per host, with its MAC and IP address
 10. Test with nmap
+11. Set up a workstation (documented in [cheat sheet](https://github.com/HoGentTIN/elnx-sme-SiebertT/blob/master/report/Task%2004%20DHCP/cheat-sheet%20DHCP.md)) and test the DHCP server
 
 
 > In order to get the names and syntax of the variables right, check the role documentation carefully
 
 
 ## Test report Task 04 - DHCP
+
+### nmap through SSH
 
 ```
 $ vagrant ssh pr001
@@ -70,6 +73,13 @@ Nmap done: 0 IP addresses (0 hosts up) scanned in 1.07 seconds
 
 ```
 
+### Workstation DHCP allocation test
+#### Dynamic IP allocated from pool
+![](assets/markdown-img-paste-20170816153610531.png)
+
+#### Static IP allocated
+
+![](assets/markdown-img-paste-20170816153724787.png)
 
 ## Resources
 
