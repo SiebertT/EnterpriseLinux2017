@@ -11,7 +11,8 @@ Goal is to learn to configure DHCP with the subnets when being provided with ran
 - Execute `vagrant up pr001`
 - Log in to the server with `vagrant ssh pr001`
 - Execute `sudo yum install nmap`
-- Test DHCP by typing `sudo nmap --script broadcast-dhcp-discover -e enp0s8`. You need to get a response and see the configured settings in the dhcp discover frame.
+- Test DHCP functionality by typing `sudo nmap --script broadcast-dhcp-discover -e enp0s8`. You need to get a response and see the configured settings in the dhcp discover frame.
+- Test DHCP IP allocation by setting up a workstation and checking the IPs provided to the interfaces
 
 
 ## Procedure/Documentation Task 03 - Fileshare
@@ -38,7 +39,7 @@ For this task, the following steps were taken:
       17. Allow unknown clients, so it is accessible to workstations
   18. Set the static DHCP per host, with its MAC and IP address
 10. Test with nmap
-11. Set up a workstation (documented in [cheat sheet](https://github.com/HoGentTIN/elnx-sme-SiebertT/blob/master/report/Task%2004%20DHCP/cheat-sheet%20DHCP.md)) and test the DHCP server
+11. Set up a workstation (documented in [cheat sheet](https://github.com/HoGentTIN/elnx-sme-SiebertT/blob/master/report/Task%2004%20DHCP/cheat-sheet%20DHCP.md)) and test the DHCP server IP allocation
 
 
 > In order to get the names and syntax of the variables right, check the role documentation carefully
@@ -81,8 +82,11 @@ Nmap done: 0 IP addresses (0 hosts up) scanned in 1.07 seconds
 
 ![](assets/markdown-img-paste-20170816153724787.png)
 
-## Resources
+#### `ip a` output
 
+![](assets/markdown-img-paste-20170816154617602.png)
+
+## Resources
 
 https://github.com/bertvv/ansible-role-dhcp
 
