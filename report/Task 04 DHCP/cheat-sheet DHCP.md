@@ -83,24 +83,23 @@ rhbase_firewall_allow_services: // allows the DHCP services through the firewall
 
 dhcp_global_domain_name: avalon.lan  // specifies the global domain name as 'avalon.lan'
 
-dhcp_global_domain_name_servers: // specifies the global DNS serves by IP, this is pu001 and pu002's IP
-  - 192.0.2.10
-  - 192.0.2.11
+dhcp_global_domain_name_servers: // specifies the global DNS serves by IP, this is to access the internet outside of the network, for this we use the Google DNSes
+  - 8.8.8.8
+  - 8.8.4.4
 
 dhcp_subnets: // specifies the subnets available to the DHCP server
   - ip: 172.16.0.0
     netmask: 255.255.0.0 // range of 172.16.0.1 -> 172.16.255.254 overall
+	  domain_name_servers: // DNS servers for the internal network, pu001 and pu002
+	    - 192.0.2.10
+	    - 192.0.2.11
     max_lease_time: 43200 // lease time for provided IPs
-    hosts: // statically specify the interface with provided MAC address to be given the specified IP
-      - name: enp0s3
-        mac: '08:00:27:85:03:66'
-        ip: 172.16.128.2
-        default_lease_time: 43200
-    pools: // pool of IPs that can be dynamically allocated to interfaces
+    pools:
       - default_lease_time: 14400
         range_begin: 172.16.192.1
         range_end: 172.16.255.253
         allow: unknown-clients
+
 
 dhcp_hosts: // pinpoints the static DHCP allocation for the specified interface
   - name: cl1
@@ -117,4 +116,4 @@ dhcp_hosts: // pinpoints the static DHCP allocation for the specified interface
 3. Make Adapter 1 and Adapter 2 host only, so they can receive DHCP addresses
 4. Click the 'Advanced' dropdown menu on one of the adapters. Copy paste the MAC address there.
 5. In the pr001.yml file, paste down the MAC address at the static host allocation. Mind the `:`'s inbetween every 2 characters.
-6. Enter your newly set up VM, check out the IP addresses provided either through CLI by using `ip a` or through the GUI. It should be the static address 172.16.128.2 and a dynamic one.
+6. Enter your newly set up VM, check out the IP addresses provided either through CLI by using `ip a` or through the GUI. It should be the static address 172.16.128.2 and a dynamic one that is between the range.

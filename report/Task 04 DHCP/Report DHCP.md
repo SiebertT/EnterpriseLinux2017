@@ -24,11 +24,20 @@ For this task, the following steps were taken:
 3. Add **pr001** to the **vagrant host** file
 4. Add **pr001** to the **host_vars** file
 5. Configure DHCP with the following
-  6. Calculate the subnets
-  7. Add the subnets
-  8. Add the global domain name and DNS
-  9. Add the global router
-  10. Test with nmap
+  6. Add the code to install the downloaded DHCP package and allow the firewall to pass the DHCP services
+  7. Set the global domain name
+  8. Set the global DNS servers, to access the internet outside of the internal network
+  9. Configure the DHCP subnets
+    10. Set the IP of the subnet and its netmask
+    11. set the DNS servers for the internal Network
+    12. set the maximum lease time in this subnets
+    13. Set up the DHCP pool
+      14. Set the lease time for this specific pool
+      15. Set the begin range for the pool
+      16. Set the end range for the pool
+      17. Allow unknown clients, so it is accessible to workstations
+  18. Set the static DHCP per host, with its MAC and IP address
+10. Test with nmap
 
 
 > In order to get the names and syntax of the variables right, check the role documentation carefully
@@ -44,20 +53,20 @@ enp0s3     : 10.0.2.15         fe80::a00:27ff:fe8e:91e0/64
 enp0s8     : 172.16.0.2        fe80::a00:27ff:fe32:7ccc/64
 [vagrant@pr001 ~]$ sudo nmap --script broadcast-dhcp-discover -e enp0s8
 
-Starting Nmap 6.40 ( http://nmap.org ) at 2017-01-24 11:50 UTC
+Starting Nmap 6.40 ( http://nmap.org ) at 2017-08-16 13:13 UTC
 Pre-scan script results:
 | broadcast-dhcp-discover:
-|   IP Offered: 172.16.222.41
+|   IP Offered: 172.16.222.42
 |   DHCP Message Type: DHCPOFFER
 |   Server Identifier: 172.16.0.2
 |   IP Address Lease Time: 0 days, 0:05:00
 |   Subnet Mask: 255.255.0.0
-|   Router: 172.16.255.254
 |   Domain Name Server: 192.0.2.10, 192.0.2.11
 |_  Domain Name: avalon.lan
 WARNING: No targets were specified, so 0 hosts scanned.
-Nmap done: 0 IP addresses (0 hosts up) scanned in 1.06 seconds
+Nmap done: 0 IP addresses (0 hosts up) scanned in 1.07 seconds
 [vagrant@pr001 ~]$
+
 
 ```
 

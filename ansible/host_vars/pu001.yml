@@ -10,20 +10,20 @@ bind_zone_networks:
   - "172.16"
 bind_zone_master_server_ip: 192.0.2.10
 
-bind_allow_query: 
+bind_allow_query:
   - any
-  
-  
+
+
 bind_listen_ipv4:
   - any
-  
+
 rhbase_firewall_allow_services:
   - dns
-  
+
 bind_zone_name_servers:
   - pu001
   - pu002
- 
+
 bind_zone_mail_servers:
   - name: pu003
     preference: 10
@@ -60,9 +60,9 @@ bind_zone_hosts:
     ip: 172.16.0.11
     aliases:
       - files
-
-
-
-
-
-
+  - name: r001
+    ip:
+      - 192.0.2.254
+      - 172.16.255.254
+    aliases:
+      - gw
