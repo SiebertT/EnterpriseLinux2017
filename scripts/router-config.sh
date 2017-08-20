@@ -10,7 +10,7 @@ delete system console device ttyS0
 # Basic settings
 #
 set system host-name r001
-
+set system domain-name 'avalon.lan'
 #set service ssh port '22'
 set service ssh port '22'
 
@@ -26,24 +26,30 @@ set interfaces ethernet eth1 description DMZ
 set interfaces ethernet eth2 address 172.16.255.254/16
 set interfaces ethernet eth2 description internal
 
-set system gateway-address 172.16.255.254
 
 #
 # Network Address Translation
 #
 
 
-set nat source rule 100 outbound-interface 'eth1'
-set nat source rule 100 source address '192.0.0.0/24'
+set nat source rule 100 outbound-interface 'eth2'
+set nat source rule 100 source address '192.0.2.0/24'
 set nat source rule 100 translation address 'masquerade'
 
-set nat source rule 200 outbound-interface 'eth2'
-set nat source rule 200 source address '172.16.0.0/16'
+set nat source rule 200 outbound-interface 'eth1'
 set nat source rule 200 translation address 'masquerade'
+set nat source rule 200 source address '172.16.0.0/16'
+
+set nat source rule 300 outbound-interface 'eth0'
+set nat source rule 300 translation address 'masquerade'
+set nat source rule 300 source address '172.16.0.0/16'
 
 #
 # Time
 #
+delete system ntp server 0.pool.ntp.org
+delete system ntp server 1.pool.ntp.org
+delete system ntp server 2.pool.ntp.org
 set system ntp server 'be.pool.ntp.org'
 set system time-zone Europe/Brussels
 
@@ -51,10 +57,8 @@ set system time-zone Europe/Brussels
 # Domain Name Service
 #
 set service dns forwarding domain avalon.lan server 192.0.2.10
-set service dns forwarding domain avalon.lan server 192.0.2.11
-set service dns forwarding name-server 8.8.8.8
-set service dns forwarding name-server 8.8.4.4
-set service dns forwarding listen-on 'eth2'
+set service dns forwarding name-server 10.0.2.3
+set service dns forwarding listen-on 'eth1'
 
 
 # Make configuration changes persistent

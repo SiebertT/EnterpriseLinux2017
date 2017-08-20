@@ -63,6 +63,5 @@ bind_zone_hosts:
   - name: r001
     ip:
       - 192.0.2.254
-      - 172.16.255.254
     aliases:
       - gw

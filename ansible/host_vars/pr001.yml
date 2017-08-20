@@ -7,8 +7,10 @@ rhbase_firewall_allow_services:
 dhcp_global_domain_name: avalon.lan
 
 dhcp_global_domain_name_servers:
-  - 8.8.8.8
-  - 8.8.4.4
+  - 192.0.2.10
+  - 192.0.2.11
+
+dhcp_global_routers: 172.16.255.254
 
 dhcp_subnets:
   - ip: 172.16.0.0
@@ -16,6 +18,7 @@ dhcp_subnets:
     domain_name_servers:
       - 192.0.2.10
       - 192.0.2.11
+      - 10.0.2.3
     max_lease_time: 43200
     pools:
       - default_lease_time: 14400
