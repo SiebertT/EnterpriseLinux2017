@@ -65,8 +65,7 @@ _It is necessary that ansible is not loaded when upping the router. All configur
 bind_zone_hosts:
 <-------other hosts------->
   - name: r001
-    ip:
-      - 192.0.2.254
+    ip: 192.0.2.254
     aliases:
       - gw
 ```

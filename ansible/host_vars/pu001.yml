@@ -61,7 +61,6 @@ bind_zone_hosts:
     aliases:
       - files
   - name: r001
-    ip:
-      - 192.0.2.254
+    ip: 192.0.2.254
     aliases:
       - gw
