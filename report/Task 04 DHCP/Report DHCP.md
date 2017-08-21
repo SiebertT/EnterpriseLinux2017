@@ -15,7 +15,7 @@ Goal is to learn to configure DHCP with the subnets when being provided with ran
 - Test DHCP IP allocation by setting up a workstation and checking the IPs provided to the interfaces
 
 
-## Procedure/Documentation Task 03 - Fileshare
+## Procedure/Documentation Task 04 - DHCP
 My documentation and code is written down in the [cheat sheet](https://github.com/HoGentTIN/elnx-sme-SiebertT/blob/master/report/Task%2004%20DHCP/cheat-sheet%20DHCP.md)
 
 For this task, the following steps were taken:

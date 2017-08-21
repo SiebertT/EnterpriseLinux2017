@@ -1,11 +1,11 @@
-# Enterprise Linux Lab Report Task 04 - DHCP
+# Enterprise Linux Lab Report Task 04 - Router
 
 - Student name: Siebert Timmermans
 - Github repo: <https://github.com/HoGentTIN/elnx-sme-SiebertT>
 
 Goal is to learn to configure DHCP with the subnets when being provided with ranges.
 
-## Test plan Task 04 - DHCP
+## Test plan Task 04 - Router
 
 - Execute `vagrant status`
 - Execute `vagrant up router`
@@ -19,7 +19,7 @@ Goal is to learn to configure DHCP with the subnets when being provided with ran
 7. Enter `ftp://172.16.0.11/` in the browser. You should be prompted for login. Log in with credentials and check if the policies are in place by accessing the shares. If you log in with the admin _Siebert_ you should be able to access all shares except for the 'Management' share.
 
 
-## Procedure/Documentation Task 03 - Fileshare
+## Procedure/Documentation Task 04 -  Router
 My documentation and code is written down in the [cheat sheet](https://github.com/HoGentTIN/elnx-sme-SiebertT/blob/master/report/Task%2004%20Router/cheat-sheet%20Router.md)
 
 For this task, the following steps were taken:
@@ -41,7 +41,7 @@ For this task, the following steps were taken:
 > As there were a lot of troubleshooting and trial and error in the configuration of the router,  extra documentation has been written in the [Task 04 Router folder](https://github.com/HoGentTIN/elnx-sme-SiebertT/tree/master/report/Task%2004%20Router).
 
 
-## Test report Task 04 - DHCP
+## Test report Task 04 -  Router
 
 ### Starting vagrant up and setting up the workstation
 
