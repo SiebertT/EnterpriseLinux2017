@@ -29,7 +29,14 @@ set interfaces ethernet eth2 description internal
 
 #
 # Network Address Translation
-#
+## NAT --> inkomende IP's naar uitgaande IP's
+
+# Outbound interface = wan link -> eth0 (wat is de nat kaart router)
+# -->For any traffic that is leaving interface eth0
+
+# 'Source' -> interne ip toegekend via dhcp -> omzetten
+
+# Masquerade = Change it so it appears to be coming from the IP address of the interface
 
 set nat source rule 200 outbound-interface 'eth1'
 set nat source rule 200 translation address 'masquerade'
@@ -51,9 +58,12 @@ set system time-zone Europe/Brussels
 #
 # Domain Name Service
 #
+# Listen-on defines the port and IP address(es) on which BIND will listen for incoming queries.
+
 set service dns forwarding domain avalon.lan server 192.0.2.10
 set service dns forwarding name-server 10.0.2.3
 set service dns forwarding listen-on 'eth1'
+set service dns forwarding listen-on 'eth2' 
 
 
 # Make configuration changes persistent
