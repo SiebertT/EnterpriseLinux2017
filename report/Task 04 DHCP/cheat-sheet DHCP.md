@@ -86,10 +86,8 @@ dhcp_global_domain_name: avalon.lan  // specifies the global domain name as 'ava
 dhcp_subnets: // specifies the subnets available to the DHCP server
   - ip: 172.16.0.0
     netmask: 255.255.0.0 // range of 172.16.0.1 -> 172.16.255.254 overall
-	  domain_name_servers: // DNS servers for the internal network, pu001 and pu002
-      - 192.0.2.10
-      - 192.0.2.11
-      - 10.0.2.3 // DNS of IPS and GW
+	  domain_name_servers: // DNS server, in this case the DNS forwarding router
+      - 172.16.255.254
     max_lease_time: 43200 // lease time for provided IPs
     pools:
       - default_lease_time: 14400

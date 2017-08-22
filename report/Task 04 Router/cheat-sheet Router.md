@@ -139,7 +139,10 @@ set system time-zone Europe/Brussels # sets the time zone to EU/Brussels
 #
 set service dns forwarding domain avalon.lan server 192.0.2.10 # sets the DNS forwarding domain and DNS server pu001
 set service dns forwarding name-server 10.0.2.3 # sets the DNS of the IPS
-set service dns forwarding listen-on 'eth1' # allows the eth1 interface (the DMZ) to listen for DNS forwarding
+# allows the eth1 and eth2 interfaces (the DMZ) to listen for DNS forwarding
+set service dns forwarding listen-on 'eth1'
+set service dns forwarding listen-on 'eth2'
+
 
 
 # Make configuration changes persistent

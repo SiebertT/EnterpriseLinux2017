@@ -30,7 +30,7 @@ For this task, the following steps were taken:
   8. Set the global DNS servers, to access the internet outside of the internal network
   9. Configure the DHCP subnets
     10. Set the IP of the subnet and its netmask
-    11. set the DNS servers for the internal Network
+    11. set the DNS forwarding server for the internal Network
     12. set the maximum lease time in this subnets
     13. Set up the DHCP pool
       14. Set the lease time for this specific pool
