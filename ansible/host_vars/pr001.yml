@@ -26,5 +26,5 @@ dhcp_subnets:
 
 dhcp_hosts:
   - name: cl1
-    mac: '08:00:27:85:03:66'
+    mac: '08:00:27:AC:CE:4A'
     ip: 172.16.128.2
