@@ -38,7 +38,7 @@ For this task, the following steps were taken:
 11. Set up a workstation (documented in [cheat sheet](https://github.com/HoGentTIN/elnx-sme-SiebertT/blob/master/report/Task%2004%20Router/cheat-sheet%20Router.md#set-up-test-environment-with-virtualbox) and test internet and intranet through the browser.
 
 
-> As there were a lot of troubleshooting and trial and error in the configuration of the router,  extra documentation has been written in the [Task 04 Router folder](https://github.com/HoGentTIN/elnx-sme-SiebertT/tree/master/report/Task%2004%20Router).
+> As there was a lot of troubleshooting and trial and error in the configuration of the router,  extra documentation has been written in the [Task 04 Router folder](https://github.com/HoGentTIN/elnx-sme-SiebertT/tree/master/report/Task%2004%20Router).
 
 
 ## Test report Task 04 -  Router
